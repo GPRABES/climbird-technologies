@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { Facebook, Instagram, Phone, Mail, MapPin } from "lucide-react";
+import servicesData from "../data/services.json";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -44,23 +45,26 @@ export default function Footer() {
           <div>
             <h4 className="text-lg font-bold mb-8">Services</h4>
             <ul className="space-y-4 text-gray-400">
-              <li><a href="#" className="hover:text-primary transition-colors">AI & Automation</a></li>
-              <li><a href="#" className="hover:text-primary transition-colors">e-Commerce Solutions</a></li>
-              <li><a href="#" className="hover:text-primary transition-colors">Web Design & Development</a></li>
-              <li><a href="#" className="hover:text-primary transition-colors">Digital Marketing</a></li>
-              <li><a href="#" className="hover:text-primary transition-colors">Technical Support</a></li>
+              {servicesData.slice(0, 5).map(service => (
+                <li key={service.id}>
+                  <Link to={`/services/${service.slug}`} className="hover:text-primary transition-colors">
+                    {service.title}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
           
           <div>
             <h4 className="text-lg font-bold mb-8">Company</h4>
             <ul className="space-y-4 text-gray-400">
-              <li><a href="#" className="hover:text-primary transition-colors">About Us</a></li>
-              <li><a href="#" className="hover:text-primary transition-colors">Our Portfolio</a></li>
-              <li><a href="#" className="hover:text-primary transition-colors">Success Stories</a></li>
+              <li><a href="/#" className="hover:text-primary transition-colors">About Us</a></li>
+              <li><a href="/#" className="hover:text-primary transition-colors">Our Portfolio</a></li>
+              <li><Link to="/success-stories" className="hover:text-primary transition-colors">Success Stories</Link></li>
+              <li><Link to="/contact" className="hover:text-primary transition-colors">Contact Us</Link></li>
               <li><Link to="/blog" className="hover:text-primary transition-colors">Blog</Link></li>
-              <li><a href="#" className="hover:text-primary transition-colors">Work Process</a></li>
-              <li><a href="#" className="hover:text-primary transition-colors">Privacy Policy</a></li>
+              <li><a href="/#process" className="hover:text-primary transition-colors">Work Process</a></li>
+              <li><Link to="/privacy" className="hover:text-primary transition-colors">Privacy Policy</Link></li>
             </ul>
           </div>
           
@@ -88,8 +92,8 @@ export default function Footer() {
             © {currentYear} Climbird Technologies. All rights reserved.
           </p>
           <div className="flex items-center gap-8 text-sm text-gray-500">
-            <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
-            <a href="#" className="hover:text-white transition-colors">Cookie Policy</a>
+            <Link to="/terms" className="hover:text-white transition-colors">Terms of Service</Link>
+            <Link to="/cookies" className="hover:text-white transition-colors">Cookie Policy</Link>
           </div>
         </div>
       </div>

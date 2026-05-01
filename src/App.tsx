@@ -10,6 +10,12 @@ const BlogList = lazy(() => import("./pages/BlogList"));
 const BlogPost = lazy(() => import("./pages/BlogPost"));
 const ServicesList = lazy(() => import("./pages/ServicesList"));
 const ServiceDetail = lazy(() => import("./pages/ServiceDetail"));
+const TermsOfService = lazy(() => import("./pages/TermsOfService"));
+const PrivacyPolicy = lazy(() => import("./pages/PrivacyPolicy"));
+const CookiePolicy = lazy(() => import("./pages/CookiePolicy"));
+const SuccessStories = lazy(() => import("./pages/SuccessStories"));
+const ContactUs = lazy(() => import("./pages/ContactUs"));
+const Process = lazy(() => import("./pages/Process"));
 
 export default function App() {
   return (
@@ -24,6 +30,12 @@ export default function App() {
               <Route path="/blog/:slug" element={<BlogPost />} />
               <Route path="/services" element={<ServicesList />} />
               <Route path="/services/:slug" element={<ServiceDetail />} />
+              <Route path="/terms" element={<TermsOfService />} />
+              <Route path="/privacy" element={<PrivacyPolicy />} />
+              <Route path="/cookies" element={<CookiePolicy />} />
+              <Route path="/success-stories" element={<SuccessStories />} />
+              <Route path="/contact" element={<ContactUs />} />
+              <Route path="/process" element={<Process />} />
             </Routes>
           </Suspense>
           <Footer />

@@ -19,8 +19,8 @@ export default function Navbar() {
 
   const navLinks = [
     { name: "Services", href: "/services" },
-    { name: "Process", href: "/#process" },
-    { name: "Testimonials", href: "/#testimonials" },
+    { name: "Process", href: "/process" },
+    { name: "Testimonials", href: "/success-stories" },
     { name: "Blog", href: "/blog" },
   ];
 
@@ -69,12 +69,12 @@ export default function Navbar() {
               </Link>
             );
           })}
-          <a
-            href={isHomePage ? "#contact" : "/#contact"}
+          <Link
+            to="/contact"
             className="bg-gradient-primary text-white px-6 py-2.5 rounded-xl font-medium shadow-md hover:shadow-lg hover:scale-105 transition-all text-sm"
           >
             Free Consultation
-          </a>
+          </Link>
         </div>
 
         {/* Mobile Menu Button */}
@@ -119,13 +119,13 @@ export default function Navbar() {
                 </Link>
               );
             })}
-            <a
-              href={isHomePage ? "#contact" : "/#contact"}
+            <Link
+              to="/contact"
               className="bg-gradient-primary text-white text-center py-4 rounded-xl font-bold shadow-lg mt-2"
               onClick={() => setIsOpen(false)}
             >
               Get Free Consultation
-            </a>
+            </Link>
           </motion.div>
         )}
       </AnimatePresence>
