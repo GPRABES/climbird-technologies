@@ -16,7 +16,7 @@ export default function BlogSection() {
             <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
             Latest Insights
           </div>
-          <h2 className="text-4xl md:text-5xl font-display font-bold text-dark mb-6 tracking-tight">
+          <h2 className="text-3xl md:text-4xl font-display font-bold text-dark mb-6 tracking-tight">
             Our Latest <span className="text-primary italic">Articles</span>
           </h2>
           <p className="text-gray-600 text-lg">
@@ -29,31 +29,24 @@ export default function BlogSection() {
             <Link 
               key={blog.id} 
               to={`/blog/${blog.slug}`}
-              className="group glass rounded-2xl overflow-hidden hover-lift border border-dark/5 hover:border-primary/30 transition-all flex flex-col h-full bg-white shadow-sm hover:shadow-xl"
+              className="group p-8 rounded-3xl border border-gray-100 hover:border-primary/20 transition-all flex flex-col h-full bg-white hover:shadow-lg hover:-translate-y-1"
             >
-              <div className="relative h-48 overflow-hidden">
-                <img 
-                  src={blog.imageUrl} 
-                  alt={blog.title} 
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-dark/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+              <div className="flex items-center gap-2 text-sm text-gray-500 mb-4">
+                <Calendar size={14} className="text-primary" /> <span className="font-medium">{blog.date}</span>
               </div>
-              <div className="p-8 flex flex-col flex-grow">
-                <div className="flex items-center gap-4 text-sm text-gray-500 mb-4">
-                  <span className="flex items-center gap-1"><Calendar size={14} /> {blog.date}</span>
-                </div>
-                <h3 className="text-xl font-bold text-dark mb-3 line-clamp-2 group-hover:text-primary transition-colors">
-                  {blog.title}
-                </h3>
-                <p className="text-gray-600 mb-6 line-clamp-3 text-sm">
-                  {blog.excerpt}
-                </p>
-                <div className="mt-auto pt-4 border-t border-dark/5 flex items-center justify-between">
-                  <span className="flex items-center gap-2 text-sm font-medium text-dark">
-                    <User size={16} className="text-primary" /> {blog.author}
-                  </span>
-                  <ArrowRight size={20} className="text-primary transform group-hover:translate-x-1 transition-transform" />
+              <h3 className="text-2xl font-bold text-dark mb-4 line-clamp-2 group-hover:text-primary transition-colors" style={{ fontFamily: "'Google Sans', sans-serif" }}>
+                {blog.title}
+              </h3>
+              <p className="text-gray-600 mb-8 line-clamp-3 leading-relaxed" style={{ fontFamily: "'Google Sans', sans-serif" }}>
+                {blog.excerpt}
+              </p>
+              <div className="mt-auto pt-5 border-t border-gray-100 flex items-center justify-between">
+                <span className="flex items-center gap-2 text-sm font-bold text-dark">
+                  <User size={16} className="text-primary" /> {blog.author}
+                </span>
+                <div className="flex items-center gap-2 text-primary font-bold text-sm group-hover:underline">
+                  Read Article
+                  <ArrowRight size={18} className="transform group-hover:translate-x-1 transition-transform" />
                 </div>
               </div>
             </Link>

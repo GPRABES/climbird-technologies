@@ -1,0 +1,98 @@
+[
+  {
+    "id": 1,
+    "slug": "ai-automation",
+    "title": "AI & Automation",
+    "icon": "Cpu",
+    "color": "bg-purple-50 text-purple-600 border-purple-100",
+    "excerpt": "Streamline your operations and scale effortlessly with intelligent, autonomous workflows.",
+    "features": [
+      "AI Customer Support Agents",
+      "Dynamic Merchandising Automation",
+      "Visual & Voice Search Integration",
+      "Autonomous Workflow Design",
+      "CRM & ERP AI Integration"
+    ],
+    "content": "Artificial Intelligence is no longer just a buzzword; it's a critical infrastructure layer for any business aiming to scale in 2026 and beyond. At Climbird Technologies, we specialize in building intelligent automation systems that handle the heavy lifting, so your team can focus on high-value, strategic work.\n\nFrom customer support agents that autonomously resolve 80% of inquiries to dynamic merchandising tools that predict inventory needs, our solutions are designed to drastically reduce operational overhead while improving accuracy.\n\nOur approach is platform-agnostic. Whether you need an LLM integrated directly into your custom SaaS dashboard or an n8n workflow connecting your Shopify store to your CRM, we architect systems that are secure, scalable, and tailored strictly to your business logic."
+  },
+  {
+    "id": 2,
+    "slug": "e-commerce",
+    "title": "e-Commerce",
+    "icon": "ShoppingCart",
+    "color": "bg-blue-50 text-blue-600 border-blue-100",
+    "excerpt": "Build high-converting online stores that turn visitors into loyal customers.",
+    "features": [
+      "Shopify Development",
+      "WooCommerce (WordPress)",
+      "Wix e-Commerce Solutions",
+      "Inventory Management Sync",
+      "Conversion Rate Optimization"
+    ],
+    "content": "The e-commerce landscape is more competitive than ever. Setting up a basic store is easy, but engineering a seamless, high-converting digital storefront requires deep technical expertise and a profound understanding of consumer psychology.\n\nWe build custom e-commerce experiences primarily on Shopify, WooCommerce, and modern Headless architectures. Our focus goes beyond just aesthetics—we optimize for milliseconds in page load times, frictionless checkout flows, and robust backend integrations that sync your inventory across multiple warehouses in real time.\n\nBy implementing advanced Conversion Rate Optimization (CRO) strategies—such as dynamic urgency, intelligent upselling, and A/B tested layouts—we ensure that every visitor has the highest possible probability of becoming a paying customer."
+  },
+  {
+    "id": 3,
+    "slug": "web-design-dev",
+    "title": "Web Design & Dev",
+    "icon": "Layout",
+    "color": "bg-green-50 text-green-600 border-green-100",
+    "excerpt": "Create stunning, high-performance websites that serve as your 24/7 digital salesperson.",
+    "features": [
+      "WordPress Web Design",
+      "Wix & Squarespace Design",
+      "Custom Web Development",
+      "UI/UX Prototyping",
+      "Technical SEO Optimization"
+    ],
+    "content": "Your website is your ultimate digital asset. It operates 24/7, represents your brand globally, and is the final destination for all your marketing efforts. We design and develop websites that are not only visually breathtaking but meticulously engineered for performance.\n\nWhether you need a flexible, easily manageable WordPress site for your content team, or a fully custom React application for complex interactivity, our development methodology remains the same: mobile-first, accessible, and lightning-fast.\n\nWe start with deep UI/UX prototyping to ensure user journeys are intuitive. From there, our developers write clean, maintainable code backed by Technical SEO best practices, ensuring your site doesn't just look good, but ranks well and loads instantly."
+  },
+  {
+    "id": 4,
+    "slug": "digital-marketing",
+    "title": "Digital Marketing",
+    "icon": "TrendingUp",
+    "color": "bg-orange-50 text-orange-600 border-orange-100",
+    "excerpt": "Drive targeted traffic, capture leads, and dominate your market share.",
+    "features": [
+      "SEO & Local SEO Strategy",
+      "Social Media Management",
+      "Email Marketing Automation",
+      "Content Creation Strategy",
+      "GBM Optimization"
+    ],
+    "content": "A beautiful website without traffic is a billboard in the desert. Our digital marketing strategies are data-driven, ROI-focused, and designed to position your brand directly in front of buyers at the exact moment they are looking for your solution.\n\nWe specialize in Organic SEO, transforming your website into an authoritative resource that Google trusts. For local businesses, our Google Business Profile (GBM) optimization and citation strategies ensure you dominate the 'Map Pack' in your specific geographical area.\n\nBeyond search, we implement sophisticated email marketing automations that nurture leads over time, recovering abandoned carts and turning one-time buyers into lifelong advocates through hyper-personalized messaging sequences."
+  },
+  {
+    "id": 5,
+    "slug": "technical-support",
+    "title": "Technical Support",
+    "icon": "ShieldCheck",
+    "color": "bg-red-50 text-red-600 border-red-100",
+    "excerpt": "Ensure your digital infrastructure remains secure, operational, and optimized.",
+    "features": [
+      "Domain & DNS Management",
+      "Email Setup & Migration",
+      "CRM Setup & Support",
+      "Google Profile Recovery",
+      "24/7 technical assistance"
+    ],
+    "content": "Technology breaks. When it does, every minute of downtime costs you revenue, trust, and momentum. Our dedicated technical support team acts as your outsourced IT department, ensuring your digital infrastructure remains bulletproof.\n\nFrom complex DNS routing and seamless email migrations (Google Workspace, Microsoft 365) to emergency recovery of suspended Google Business Profiles, we handle the technical headaches so you don't have to.\n\nWe provide proactive monitoring, regular security patching, and rapid-response troubleshooting. Whether you are migrating massive databases or simply need a misconfigured CRM fixed immediately, our experts are on standby."
+  },
+  {
+    "id": 6,
+    "slug": "branding-design",
+    "title": "Branding & Design",
+    "icon": "Palette",
+    "color": "bg-pink-50 text-pink-600 border-pink-100",
+    "excerpt": "Craft an unforgettable brand identity that commands attention and builds trust.",
+    "features": [
+      "Logo & Identity Systems",
+      "Brand Style Guidelines",
+      "Letterhead & Envelope Design",
+      "Business Card Creation",
+      "Print Materials & Signage"
+    ],
+    "content": "Brand identity is much more than a logo; it is the visual and emotional language your business uses to communicate its core values to the world. A cohesive, premium brand builds instant trust and allows you to command higher prices in the market.\n\nOur design process begins with strategic brand positioning. We develop comprehensive identity systems including typography hierarchies, color palettes, and logo variations that work flawlessly across both digital and physical mediums.\n\nFrom business cards and premium letterheads to massive environmental signage, we ensure absolute consistency. The result is a brand that feels established, professional, and entirely unforgettable from the very first impression."
+  }
+]

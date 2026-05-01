@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Facebook, Twitter, Instagram, Linkedin, Github } from "lucide-react";
+import { Facebook, Instagram, Phone, Mail, MapPin } from "lucide-react";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -17,7 +17,7 @@ export default function Footer() {
               <img 
                 src="/logo.svg" 
                 alt="Climbird Logo" 
-                className="w-12 h-12 rounded-xl shadow-[0_0_15px_rgba(255,255,255,0.2)] group-hover:scale-110 transition-transform brightness-0 invert"
+                className="w-12 h-12 group-hover:scale-110 transition-transform brightness-0 invert"
               />
               <span 
                 className="text-2xl leading-none tracking-tight mt-1 text-white"
@@ -30,9 +30,12 @@ export default function Footer() {
               Empowering businesses through cutting-edge AI automation, high-performance web development, and result-driven digital marketing strategies.
             </p>
             <div className="flex items-center gap-4">
-              {[Facebook, Twitter, Instagram, Linkedin, Github].map((Icon, i) => (
-                <a key={i} href="#" className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-primary hover:border-primary transition-all text-gray-400 hover:text-white">
-                  <Icon size={18} />
+              {[
+                { Icon: Facebook, href: "https://www.facebook.com/profile.php?id=61574303680004" },
+                { Icon: Instagram, href: "https://www.instagram.com/climbirdtechnologies/" }
+              ].map((social, i) => (
+                <a key={i} href={social.href} target={social.href !== "#" ? "_blank" : undefined} rel={social.href !== "#" ? "noopener noreferrer" : undefined} className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-primary hover:border-primary transition-all text-gray-400 hover:text-white">
+                  <social.Icon size={18} />
                 </a>
               ))}
             </div>
@@ -64,16 +67,16 @@ export default function Footer() {
           <div>
             <h4 className="text-lg font-bold mb-8">Contact Info</h4>
             <ul className="space-y-4 text-gray-400">
-              <li className="flex items-start gap-3">
-                <span className="text-primary">Phone:</span>
+              <li className="flex items-center gap-3">
+                <Phone size={18} className="text-primary" />
                 <span>+977 9865046396</span>
               </li>
-              <li className="flex items-start gap-3">
-                <span className="text-primary">Email:</span>
+              <li className="flex items-center gap-3">
+                <Mail size={18} className="text-primary" />
                 <span>info@climbirdtechnologies.com</span>
               </li>
               <li className="flex items-start gap-3">
-                <span className="text-primary">Address:</span>
+                <MapPin size={18} className="text-primary mt-0.5" />
                 <span className="max-w-[200px]">Kathmandu, Nepal</span>
               </li>
             </ul>

@@ -3,10 +3,25 @@ import { Send, Phone, Mail, MapPin } from "lucide-react";
 import React from "react";
 
 export default function Contact() {
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // Simulate form submission
-    alert("Thank you for your interest! We'll get back to you shortly.");
+    const formData = new FormData(e.currentTarget);
+    const name = formData.get('name');
+    const email = formData.get('email');
+    const phone = formData.get('phone') || 'Not provided';
+    const service = formData.get('service');
+    const message = formData.get('message');
+
+    const subject = encodeURIComponent(`New Inquiry: ${service} - ${name}`);
+    const body = encodeURIComponent(
+      `Name: ${name}\n` +
+      `Email: ${email}\n` +
+      `Phone: ${phone}\n` +
+      `Interested In: ${service}\n\n` +
+      `Message:\n${message}`
+    );
+
+    window.location.href = `mailto:info@climbirdtechnologies.com?subject=${subject}&body=${body}`;
   };
 
   return (
@@ -84,6 +99,7 @@ export default function Contact() {
                     <label className="text-sm font-bold text-dark/60 px-1">Full Name</label>
                     <input 
                       type="text" 
+                      name="name"
                       required 
                       className="w-full bg-light-bg border-none rounded-xl px-5 py-4 focus:ring-2 focus:ring-primary outline-none transition-all"
                       placeholder="Jane Doe"
@@ -93,6 +109,7 @@ export default function Contact() {
                     <label className="text-sm font-bold text-dark/60 px-1">Email Address</label>
                     <input 
                       type="email" 
+                      name="email"
                       required 
                       className="w-full bg-light-bg border-none rounded-xl px-5 py-4 focus:ring-2 focus:ring-primary outline-none transition-all"
                       placeholder="jane@company.com"
@@ -105,6 +122,7 @@ export default function Contact() {
                     <label className="text-sm font-bold text-dark/60 px-1">Phone (Optional)</label>
                     <input 
                       type="tel" 
+                      name="phone"
                       className="w-full bg-light-bg border-none rounded-xl px-5 py-4 focus:ring-2 focus:ring-primary outline-none transition-all"
                       placeholder="+1 (555) 000-0000"
                     />
@@ -113,15 +131,16 @@ export default function Contact() {
                     <label className="text-sm font-bold text-dark/60 px-1">Interested In</label>
                     <select 
                       required
+                      name="service"
                       className="w-full bg-light-bg border-none rounded-xl px-5 py-4 focus:ring-2 focus:ring-primary outline-none transition-all appearance-none"
                     >
                       <option value="">Select Service</option>
-                      <option value="ai-automation">AI & Automation</option>
-                      <option value="ecommerce">e-Commerce</option>
-                      <option value="web-design">Web Design & Dev</option>
-                      <option value="digital-marketing">Digital Marketing</option>
-                      <option value="tech-support">Technical Support</option>
-                      <option value="branding">Branding & Design</option>
+                      <option value="AI & Automation">AI & Automation</option>
+                      <option value="e-Commerce">e-Commerce</option>
+                      <option value="Web Design & Dev">Web Design & Dev</option>
+                      <option value="Digital Marketing">Digital Marketing</option>
+                      <option value="Technical Support">Technical Support</option>
+                      <option value="Branding & Design">Branding & Design</option>
                     </select>
                   </div>
                 </div>
@@ -130,6 +149,7 @@ export default function Contact() {
                   <label className="text-sm font-bold text-dark/60 px-1">How can we help?</label>
                   <textarea 
                     required 
+                    name="message"
                     rows={4}
                     className="w-full bg-light-bg border-none rounded-xl px-5 py-4 focus:ring-2 focus:ring-primary outline-none transition-all resize-none"
                     placeholder="Tell us about your project goals..."

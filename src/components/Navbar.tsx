@@ -18,11 +18,10 @@ export default function Navbar() {
   }, []);
 
   const navLinks = [
-    { name: "Services", href: "/#services" },
+    { name: "Services", href: "/services" },
     { name: "Process", href: "/#process" },
     { name: "Testimonials", href: "/#testimonials" },
     { name: "Blog", href: "/blog" },
-    { name: "Contact", href: "/#contact" },
   ];
 
   return (
@@ -36,7 +35,7 @@ export default function Navbar() {
           <img 
             src="/logo.svg" 
             alt="Climbird Logo" 
-            className="w-12 h-12 rounded-xl group-hover:scale-110 transition-transform shadow-lg"
+            className="w-12 h-12 group-hover:scale-110 transition-transform"
           />
           <span 
             className="text-2xl leading-none tracking-tight text-dark mt-1"
@@ -48,21 +47,34 @@ export default function Navbar() {
 
         {/* Desktop Nav */}
         <div className="hidden md:flex items-center gap-8">
-          {navLinks.map((link) => (
-            <Link
-              key={link.name}
-              to={link.href}
-              className="text-sm font-medium text-dark/70 hover:text-primary transition-colors"
-            >
-              {link.name}
-            </Link>
-          ))}
-          <Link
-            to="/#contact"
+          {navLinks.map((link) => {
+            const isAnchor = link.href.includes('#');
+            const targetHref = isAnchor ? (isHomePage ? link.href.replace('/', '') : link.href) : link.href;
+            
+            return isAnchor ? (
+              <a
+                key={link.name}
+                href={targetHref}
+                className="text-sm font-medium text-dark/70 hover:text-primary transition-colors"
+              >
+                {link.name}
+              </a>
+            ) : (
+              <Link
+                key={link.name}
+                to={targetHref}
+                className="text-sm font-medium text-dark/70 hover:text-primary transition-colors"
+              >
+                {link.name}
+              </Link>
+            );
+          })}
+          <a
+            href={isHomePage ? "#contact" : "/#contact"}
             className="bg-gradient-primary text-white px-6 py-2.5 rounded-xl font-medium shadow-md hover:shadow-lg hover:scale-105 transition-all text-sm"
           >
             Free Consultation
-          </Link>
+          </a>
         </div>
 
         {/* Mobile Menu Button */}
@@ -83,23 +95,37 @@ export default function Navbar() {
             exit={{ opacity: 0, y: -20 }}
             className="md:hidden glass absolute top-full left-0 right-0 border-t border-dark/10 p-6 flex flex-col gap-4 shadow-xl"
           >
-            {navLinks.map((link) => (
-              <Link
-                key={link.name}
-                to={link.href}
-                className="text-lg font-medium text-dark"
-                onClick={() => setIsOpen(false)}
-              >
-                {link.name}
-              </Link>
-            ))}
-            <Link
-              to="/#contact"
+            {navLinks.map((link) => {
+              const isAnchor = link.href.includes('#');
+              const targetHref = isAnchor ? (isHomePage ? link.href.replace('/', '') : link.href) : link.href;
+
+              return isAnchor ? (
+                <a
+                  key={link.name}
+                  href={targetHref}
+                  className="text-lg font-medium text-dark"
+                  onClick={() => setIsOpen(false)}
+                >
+                  {link.name}
+                </a>
+              ) : (
+                <Link
+                  key={link.name}
+                  to={targetHref}
+                  className="text-lg font-medium text-dark"
+                  onClick={() => setIsOpen(false)}
+                >
+                  {link.name}
+                </Link>
+              );
+            })}
+            <a
+              href={isHomePage ? "#contact" : "/#contact"}
               className="bg-gradient-primary text-white text-center py-4 rounded-xl font-bold shadow-lg mt-2"
               onClick={() => setIsOpen(false)}
             >
               Get Free Consultation
-            </Link>
+            </a>
           </motion.div>
         )}
       </AnimatePresence>
