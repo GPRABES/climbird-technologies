@@ -1,0 +1,27 @@
+steps:
+  # Step 1: Build the container image
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '-t', 'gcr.io/$PROJECT_ID/climbird-technologies', '.']
+
+  # Step 2: Push the image to the registry
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'gcr.io/$PROJECT_ID/climbird-technologies']
+
+  # Step 3: Deploy to Cloud Run with Debugging enabled
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    entrypoint: 'gcloud'
+    args:
+      - 'run'
+      - 'deploy'
+      - 'climbird-technologies'
+      - '--image'
+      - 'gcr.io/$PROJECT_ID/climbird-technologies'
+      - '--region'
+      - 'us-central1'
+      - '--platform'
+      - 'managed'
+      - '--allow-unauthenticated'
+      - '--verbosity=debug'
+
+images:
+  - 'gcr.io/$PROJECT_ID/climbird-technologies'

@@ -1,21 +1,21 @@
-# Build stage
-FROM node:20-slim AS builder
+FROM node:20
+
 WORKDIR /app
+
+# Install dependencies
 COPY package*.json ./
 RUN npm install
+
+# Copy source code
 COPY . .
+
+# Build the application
 RUN npm run build
 
-# Production stage
-FROM node:20-slim
-WORKDIR /app
-COPY --from=builder /app/dist ./dist
-COPY --from=builder /app/package*.json ./
-COPY --from=builder /app/server.js ./
-RUN npm install --omit=dev
-
+# Set environment variables
 ENV NODE_ENV=production
 ENV PORT=8080
 EXPOSE 8080
 
+# Start the server
 CMD ["node", "server.js"]
