@@ -1,26 +1,21 @@
-# Use the official Node.js image.
-FROM node:20
-
-# Create and change to the app directory.
-WORKDIR /usr/src/app
-
-# Copy application dependency manifests to the container image.
+# Build stage
+FROM node:20-slim AS builder
+WORKDIR /app
 COPY package*.json ./
-
-# Install dependencies.
 RUN npm install
-
-# Copy local code to the container image.
 COPY . .
-
-# Build the app.
 RUN npm run build
 
-# Set the port environment variable.
-ENV PORT 8080
+# Production stage
+FROM node:20-slim
+WORKDIR /app
+COPY --from=builder /app/dist ./dist
+COPY --from=builder /app/package*.json ./
+COPY --from=builder /app/server.js ./
+RUN npm install --omit=dev
 
-# Expose the port.
+ENV NODE_ENV=production
+ENV PORT=8080
 EXPOSE 8080
 
-# Run the web service on container startup.
-CMD [ "npm", "start" ]
+CMD ["node", "server.js"]
