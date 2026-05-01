@@ -1,3 +1,4 @@
+import heroIllustration from "@/src/assets/images/hero_illustration_1777619673825.png";
 import { motion } from "motion/react";
 import { ArrowRight, ChevronRight, Rocket } from "lucide-react";
 
@@ -90,7 +91,7 @@ export default function Hero() {
               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-gradient-to-tr from-primary/20 to-transparent rounded-full animate-pulse blur-3xl -z-10" />
               
               <img
-                src="/src/assets/images/hero_illustration_1777619673825.png"
+                src={heroIllustration}
                 alt="Climbird Growth Illustration"
                 className="w-full h-auto drop-shadow-2xl"
                 referrerPolicy="no-referrer"
