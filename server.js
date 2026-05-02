@@ -70,25 +70,88 @@ app.post('/api/contact', async (req, res) => {
       replyTo: email,
       subject: `New Inquiry: ${service} — ${name}`,
       html: `
-        <div style="font-family: 'Segoe UI', Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 32px; background: #f9f9f7; border-radius: 16px;">
-          <div style="background: #0D0D0D; padding: 24px 32px; border-radius: 12px 12px 0 0;">
-            <h1 style="color: #FDBB30; margin: 0; font-size: 22px;">New Contact Form Submission</h1>
-          </div>
-          <div style="background: white; padding: 32px; border: 1px solid #eee; border-top: none; border-radius: 0 0 12px 12px;">
-            <table style="width: 100%; border-collapse: collapse;">
-              <tr><td style="padding: 10px 0; color: #999; font-size: 13px; font-weight: bold; text-transform: uppercase; letter-spacing: 1px;">Name</td></tr>
-              <tr><td style="padding: 0 0 16px; font-size: 16px; color: #1a1a1a; font-weight: 600;">${name}</td></tr>
-              <tr><td style="padding: 10px 0; color: #999; font-size: 13px; font-weight: bold; text-transform: uppercase; letter-spacing: 1px;">Email</td></tr>
-              <tr><td style="padding: 0 0 16px; font-size: 16px;"><a href="mailto:${email}" style="color: #FDBB30; text-decoration: none;">${email}</a></td></tr>
-              <tr><td style="padding: 10px 0; color: #999; font-size: 13px; font-weight: bold; text-transform: uppercase; letter-spacing: 1px;">Phone</td></tr>
-              <tr><td style="padding: 0 0 16px; font-size: 16px; color: #1a1a1a;">${phone || 'Not provided'}</td></tr>
-              <tr><td style="padding: 10px 0; color: #999; font-size: 13px; font-weight: bold; text-transform: uppercase; letter-spacing: 1px;">Service</td></tr>
-              <tr><td style="padding: 0 0 16px; font-size: 16px; color: #1a1a1a; font-weight: 600;">${service}</td></tr>
-              <tr><td style="padding: 10px 0; color: #999; font-size: 13px; font-weight: bold; text-transform: uppercase; letter-spacing: 1px;">Message</td></tr>
-              <tr><td style="padding: 0 0 16px; font-size: 16px; color: #1a1a1a; line-height: 1.6;">${message.replace(/\n/g, '<br>')}</td></tr>
-            </table>
-          </div>
-        </div>
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"></head>
+<body style="margin:0;padding:0;background:#F0F2F5;font-family:'Segoe UI',Roboto,Arial,sans-serif;">
+<table width="100%" cellpadding="0" cellspacing="0" style="background:#F0F2F5;padding:40px 20px;">
+<tr><td align="center">
+<table width="600" cellpadding="0" cellspacing="0" style="max-width:600px;width:100%;">
+
+  <!-- Logo Bar -->
+  <tr><td style="background:#0F172A;padding:28px 40px;border-radius:16px 16px 0 0;">
+    <table width="100%"><tr>
+      <td><span style="font-size:24px;font-weight:800;color:#FFFFFF;letter-spacing:-0.5px;">🌿 Climbird</span></td>
+      <td align="right"><span style="font-size:11px;font-weight:700;color:#85C440;text-transform:uppercase;letter-spacing:2px;">New Lead</span></td>
+    </tr></table>
+  </td></tr>
+
+  <!-- Green Accent Strip -->
+  <tr><td style="background:linear-gradient(90deg,#85C440,#6CA334);height:4px;font-size:0;line-height:0;">&nbsp;</td></tr>
+
+  <!-- Title Section -->
+  <tr><td style="background:#FFFFFF;padding:36px 40px 20px;">
+    <h1 style="margin:0 0 6px;font-size:26px;font-weight:800;color:#0F172A;letter-spacing:-0.5px;">New Contact Form Submission</h1>
+    <p style="margin:0;font-size:14px;color:#94A3B8;">Received on ${new Date().toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })} at ${new Date().toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' })}</p>
+  </td></tr>
+
+  <!-- Details Card -->
+  <tr><td style="background:#FFFFFF;padding:0 40px 36px;">
+    <table width="100%" cellpadding="0" cellspacing="0" style="background:#F8FAFC;border:1px solid #E2E8F0;border-radius:12px;overflow:hidden;">
+      
+      <tr><td style="padding:20px 24px 12px;">
+        <span style="font-size:10px;font-weight:800;color:#94A3B8;text-transform:uppercase;letter-spacing:1.5px;">Contact Name</span><br>
+        <span style="font-size:18px;font-weight:700;color:#0F172A;">${name}</span>
+      </td></tr>
+      
+      <tr><td style="padding:0 24px;"><div style="border-top:1px solid #E2E8F0;"></div></td></tr>
+      
+      <tr><td style="padding:12px 24px;">
+        <table width="100%"><tr>
+          <td width="50%" style="vertical-align:top;padding-right:12px;">
+            <span style="font-size:10px;font-weight:800;color:#94A3B8;text-transform:uppercase;letter-spacing:1.5px;">Email</span><br>
+            <a href="mailto:${email}" style="font-size:15px;font-weight:600;color:#85C440;text-decoration:none;">${email}</a>
+          </td>
+          <td width="50%" style="vertical-align:top;">
+            <span style="font-size:10px;font-weight:800;color:#94A3B8;text-transform:uppercase;letter-spacing:1.5px;">Phone</span><br>
+            <span style="font-size:15px;font-weight:600;color:#0F172A;">${phone || 'Not provided'}</span>
+          </td>
+        </tr></table>
+      </td></tr>
+      
+      <tr><td style="padding:0 24px;"><div style="border-top:1px solid #E2E8F0;"></div></td></tr>
+      
+      <tr><td style="padding:12px 24px;">
+        <span style="font-size:10px;font-weight:800;color:#94A3B8;text-transform:uppercase;letter-spacing:1.5px;">Interested Service</span><br>
+        <span style="display:inline-block;margin-top:6px;background:#85C440;color:#FFFFFF;font-size:13px;font-weight:700;padding:6px 16px;border-radius:20px;">${service}</span>
+      </td></tr>
+
+      <tr><td style="padding:0 24px;"><div style="border-top:1px solid #E2E8F0;"></div></td></tr>
+      
+      <tr><td style="padding:12px 24px 20px;">
+        <span style="font-size:10px;font-weight:800;color:#94A3B8;text-transform:uppercase;letter-spacing:1.5px;">Message</span><br>
+        <p style="margin:8px 0 0;font-size:15px;color:#334155;line-height:1.7;white-space:pre-wrap;">${message}</p>
+      </td></tr>
+
+    </table>
+  </td></tr>
+
+  <!-- Quick Action -->
+  <tr><td style="background:#FFFFFF;padding:0 40px 36px;" align="center">
+    <a href="mailto:${email}?subject=Re: Your Inquiry about ${encodeURIComponent(service)} — Climbird Technologies" style="display:inline-block;background:#0F172A;color:#FFFFFF;font-size:14px;font-weight:700;padding:14px 36px;border-radius:10px;text-decoration:none;">Reply to ${name} →</a>
+  </td></tr>
+
+  <!-- Footer -->
+  <tr><td style="padding:24px 40px;text-align:center;">
+    <p style="margin:0;font-size:12px;color:#94A3B8;">This is an automated notification from your website contact form.</p>
+    <p style="margin:6px 0 0;font-size:12px;color:#94A3B8;">© ${new Date().getFullYear()} Climbird Technologies · Kathmandu, Nepal</p>
+  </td></tr>
+
+</table>
+</td></tr>
+</table>
+</body>
+</html>
       `,
     });
 
@@ -96,31 +159,144 @@ app.post('/api/contact', async (req, res) => {
     await transporter.sendMail({
       from: `"Climbird Technologies" <${fromAddr}>`,
       to: email,
-      subject: `We received your message — Climbird Technologies`,
+      subject: `Thank you, ${name}! We received your inquiry — Climbird Technologies`,
       html: `
-        <div style="font-family: 'Segoe UI', Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 32px; background: #f9f9f7; border-radius: 16px;">
-          <div style="background: #0D0D0D; padding: 24px 32px; border-radius: 12px 12px 0 0;">
-            <h1 style="color: #FDBB30; margin: 0; font-size: 22px;">Thank You, ${name}!</h1>
-          </div>
-          <div style="background: white; padding: 32px; border: 1px solid #eee; border-top: none; border-radius: 0 0 12px 12px;">
-            <p style="color: #333; font-size: 16px; line-height: 1.7; margin-top: 0;">
-              We have received your inquiry about <strong>${service}</strong> and our team will get back to you within <strong>24 hours</strong>.
-            </p>
-            <div style="background: #f9f9f7; padding: 20px; border-radius: 12px; margin: 20px 0; border: 1px solid #eee;">
-              <p style="color: #999; font-size: 12px; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; margin-top: 0;">Your Message</p>
-              <p style="color: #333; font-size: 15px; line-height: 1.6; margin-bottom: 0;">${message.replace(/\n/g, '<br>')}</p>
-            </div>
-            <p style="color: #333; font-size: 16px; line-height: 1.7;">
-              If you need immediate assistance, feel free to call us at <a href="tel:+9779865046396" style="color: #FDBB30; text-decoration: none; font-weight: 600;">+977 9865046396</a> or reply to this email.
-            </p>
-            <hr style="border: none; border-top: 1px solid #eee; margin: 24px 0;" />
-            <p style="color: #999; font-size: 13px; margin-bottom: 0;">
-              Best regards,<br />
-              <strong style="color: #1a1a1a;">The Climbird Technologies Team</strong><br />
-              <a href="https://climbirdtechnologies.com" style="color: #FDBB30; text-decoration: none;">climbirdtechnologies.com</a>
-            </p>
-          </div>
-        </div>
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"></head>
+<body style="margin:0;padding:0;background:#F0F2F5;font-family:'Segoe UI',Roboto,Arial,sans-serif;">
+<table width="100%" cellpadding="0" cellspacing="0" style="background:#F0F2F5;padding:40px 20px;">
+<tr><td align="center">
+<table width="600" cellpadding="0" cellspacing="0" style="max-width:600px;width:100%;">
+
+  <!-- Header with Logo -->
+  <tr><td style="background:#0F172A;padding:32px 40px;border-radius:16px 16px 0 0;text-align:center;">
+    <span style="font-size:28px;font-weight:800;color:#FFFFFF;letter-spacing:-0.5px;">🌿 Climbird</span>
+    <p style="margin:8px 0 0;font-size:12px;font-weight:700;color:#85C440;text-transform:uppercase;letter-spacing:3px;">Technologies</p>
+  </td></tr>
+
+  <!-- Green Accent -->
+  <tr><td style="background:linear-gradient(90deg,#85C440,#6CA334);height:4px;font-size:0;line-height:0;">&nbsp;</td></tr>
+
+  <!-- Greeting -->
+  <tr><td style="background:#FFFFFF;padding:40px 40px 24px;">
+    <h1 style="margin:0 0 8px;font-size:28px;font-weight:800;color:#0F172A;letter-spacing:-0.5px;">Thank you, ${name}! 🎉</h1>
+    <p style="margin:0;font-size:16px;color:#64748B;line-height:1.7;">
+      We have received your inquiry about <strong style="color:#0F172A;">${service}</strong> and our team is already on it. You can expect a personalized response within <strong style="color:#85C440;">24 hours</strong>.
+    </p>
+  </td></tr>
+
+  <!-- Message Summary -->
+  <tr><td style="background:#FFFFFF;padding:0 40px 32px;">
+    <table width="100%" cellpadding="0" cellspacing="0" style="background:#F8FAFC;border:1px solid #E2E8F0;border-radius:12px;">
+      <tr><td style="padding:20px 24px 8px;">
+        <span style="font-size:10px;font-weight:800;color:#85C440;text-transform:uppercase;letter-spacing:2px;">Your Message</span>
+      </td></tr>
+      <tr><td style="padding:0 24px 20px;">
+        <p style="margin:0;font-size:15px;color:#334155;line-height:1.7;font-style:italic;white-space:pre-wrap;">"${message}"</p>
+      </td></tr>
+    </table>
+  </td></tr>
+
+  <!-- What Happens Next -->
+  <tr><td style="background:#FFFFFF;padding:0 40px 32px;">
+    <h2 style="margin:0 0 16px;font-size:18px;font-weight:800;color:#0F172A;">What Happens Next?</h2>
+    <table width="100%" cellpadding="0" cellspacing="0">
+      <tr>
+        <td width="40" style="vertical-align:top;padding-bottom:14px;">
+          <div style="width:28px;height:28px;background:#85C440;color:#FFFFFF;font-size:13px;font-weight:800;border-radius:50%;text-align:center;line-height:28px;">1</div>
+        </td>
+        <td style="vertical-align:top;padding-bottom:14px;">
+          <span style="font-size:14px;font-weight:700;color:#0F172A;">Review</span>
+          <p style="margin:2px 0 0;font-size:13px;color:#64748B;line-height:1.5;">Our team reviews your requirements and matches you with the right specialist.</p>
+        </td>
+      </tr>
+      <tr>
+        <td width="40" style="vertical-align:top;padding-bottom:14px;">
+          <div style="width:28px;height:28px;background:#85C440;color:#FFFFFF;font-size:13px;font-weight:800;border-radius:50%;text-align:center;line-height:28px;">2</div>
+        </td>
+        <td style="vertical-align:top;padding-bottom:14px;">
+          <span style="font-size:14px;font-weight:700;color:#0F172A;">Discovery Call</span>
+          <p style="margin:2px 0 0;font-size:13px;color:#64748B;line-height:1.5;">We schedule a free 30-minute consultation to understand your goals in depth.</p>
+        </td>
+      </tr>
+      <tr>
+        <td width="40" style="vertical-align:top;">
+          <div style="width:28px;height:28px;background:#85C440;color:#FFFFFF;font-size:13px;font-weight:800;border-radius:50%;text-align:center;line-height:28px;">3</div>
+        </td>
+        <td style="vertical-align:top;">
+          <span style="font-size:14px;font-weight:700;color:#0F172A;">Custom Proposal</span>
+          <p style="margin:2px 0 0;font-size:13px;color:#64748B;line-height:1.5;">You receive a tailored strategy and quote — no cookie-cutter packages, ever.</p>
+        </td>
+      </tr>
+    </table>
+  </td></tr>
+
+  <!-- Services Overview -->
+  <tr><td style="background:#FFFFFF;padding:0 40px 32px;">
+    <table width="100%" cellpadding="0" cellspacing="0" style="background:#0F172A;border-radius:12px;overflow:hidden;">
+      <tr><td style="padding:24px 28px 12px;">
+        <span style="font-size:10px;font-weight:800;color:#85C440;text-transform:uppercase;letter-spacing:2px;">Our Services</span>
+      </td></tr>
+      <tr><td style="padding:0 28px 24px;">
+        <table width="100%" cellpadding="0" cellspacing="0">
+          <tr>
+            <td width="50%" style="padding:6px 0;"><span style="font-size:13px;color:#CBD5E1;">🤖 AI & Automation</span></td>
+            <td width="50%" style="padding:6px 0;"><span style="font-size:13px;color:#CBD5E1;">🛒 e-Commerce</span></td>
+          </tr>
+          <tr>
+            <td style="padding:6px 0;"><span style="font-size:13px;color:#CBD5E1;">💻 Web Design & Dev</span></td>
+            <td style="padding:6px 0;"><span style="font-size:13px;color:#CBD5E1;">📈 Digital Marketing</span></td>
+          </tr>
+          <tr>
+            <td style="padding:6px 0;"><span style="font-size:13px;color:#CBD5E1;">🔧 Technical Support</span></td>
+            <td style="padding:6px 0;"><span style="font-size:13px;color:#CBD5E1;">🎨 Branding & Design</span></td>
+          </tr>
+        </table>
+      </td></tr>
+    </table>
+  </td></tr>
+
+  <!-- CTA -->
+  <tr><td style="background:#FFFFFF;padding:0 40px 36px;text-align:center;">
+    <a href="https://climbirdtechnologies.com/services" style="display:inline-block;background:#85C440;color:#FFFFFF;font-size:14px;font-weight:700;padding:14px 36px;border-radius:10px;text-decoration:none;">Explore All Services →</a>
+  </td></tr>
+
+  <!-- Divider -->
+  <tr><td style="background:#FFFFFF;padding:0 40px;"><div style="border-top:1px solid #E2E8F0;"></div></td></tr>
+
+  <!-- Contact Info -->
+  <tr><td style="background:#FFFFFF;padding:24px 40px;border-radius:0 0 16px 16px;">
+    <table width="100%"><tr>
+      <td style="vertical-align:top;">
+        <p style="margin:0 0 4px;font-size:13px;font-weight:700;color:#0F172A;">Need immediate help?</p>
+        <p style="margin:0;font-size:13px;color:#64748B;">
+          📞 <a href="tel:+9779865046396" style="color:#85C440;text-decoration:none;font-weight:600;">+977 9865046396</a><br>
+          ✉️ <a href="mailto:info@climbirdtechnologies.com" style="color:#85C440;text-decoration:none;font-weight:600;">info@climbirdtechnologies.com</a><br>
+          📍 Kathmandu, Nepal
+        </p>
+      </td>
+      <td align="right" style="vertical-align:top;">
+        <a href="https://www.facebook.com/profile.php?id=61574303680004" style="display:inline-block;width:32px;height:32px;background:#0F172A;border-radius:50%;text-align:center;line-height:32px;text-decoration:none;font-size:14px;margin-left:6px;">📘</a>
+        <a href="https://www.instagram.com/climbirdtechnologies/" style="display:inline-block;width:32px;height:32px;background:#0F172A;border-radius:50%;text-align:center;line-height:32px;text-decoration:none;font-size:14px;margin-left:6px;">📸</a>
+      </td>
+    </tr></table>
+  </td></tr>
+
+  <!-- Footer -->
+  <tr><td style="padding:24px 40px;text-align:center;">
+    <p style="margin:0 0 4px;font-size:12px;color:#94A3B8;">
+      <a href="https://climbirdtechnologies.com" style="color:#85C440;text-decoration:none;font-weight:600;">climbirdtechnologies.com</a>
+    </p>
+    <p style="margin:0;font-size:11px;color:#94A3B8;">© ${new Date().getFullYear()} Climbird Technologies Pvt. Ltd. · All rights reserved.</p>
+    <p style="margin:4px 0 0;font-size:11px;color:#CBD5E1;">Empowering businesses through AI, web development, and digital marketing.</p>
+  </td></tr>
+
+</table>
+</td></tr>
+</table>
+</body>
+</html>
       `,
     });
 
