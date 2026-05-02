@@ -10,22 +10,21 @@ export default function Contact() {
     setStatus("submitting");
 
     const formData = new FormData(e.currentTarget);
-
-    // Add Web3Forms Access Key
-    // The user should replace this with their actual key from web3forms.com
-    formData.append("access_key", "94048c9d-381d-4426-be22-20d489b4add8"); // Provided a working key for now
-
-    const object = Object.fromEntries(formData);
-    const json = JSON.stringify(object);
+    const payload = {
+      name: formData.get("name"),
+      email: formData.get("email"),
+      phone: formData.get("phone") || "",
+      service: formData.get("service"),
+      message: formData.get("message"),
+    };
 
     try {
-      const res = await fetch("https://api.web3forms.com/submit", {
+      const res = await fetch("/api/contact", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          Accept: "application/json",
         },
-        body: json,
+        body: JSON.stringify(payload),
       });
       const result = await res.json();
       if (result.success) {
